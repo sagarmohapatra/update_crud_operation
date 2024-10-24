@@ -1,0 +1,84 @@
+<div class="container-fluid mt-4">
+  <div class="card">
+    <h2 class="text-center mt-2">Manage User</h2>
+    <hr />
+
+    <div class="row justify-content-center">
+      <div class="col-md-5 text-center">
+        <h2>Add Users</h2>
+
+        <form #userForm="ngForm" (ngSubmit)="onAddUser(userForm.value)">
+          <div class="form-group">
+            <input
+              placeholder="User Name"
+              type="text"
+              class="form-control"
+              name="name"
+              ngModel
+              required
+
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Tehnology use"
+             
+              name="technology"
+              ngModel
+              required
+            /> 
+          
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary mx-2">
+            {{edtMode? 'Update User': "Add Product"}} 
+            </button>
+
+            <button type="button" class="btn btn-warning"(click)="fetchUser()" >Fetch User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <!-- <h3 class="p-3">{{ dataTitle | async }}</h3> -->
+    <div class="mt-2">
+      <table class="table table-striped">
+        <thead class="table table-dark">
+          <tr>
+            <th>#</th>
+            <!-- <th>Id</th> -->
+            <th>Name</th>
+            <th>Price</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of Store; index as i">
+            <td>{{i+1}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.technology}}</td>
+            <td>
+              <button class="btn btn-outline-danger" (click)="onDeleteUser(data.userId)">Delete</button>
+            </td>
+            <td>
+              <button class="btn btn-outline-danger" (click)="onEditItem(data.userId,i)">Edit</button>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="spring">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        Fetching Product
+      </div>
+    </div>
+  </div>
+</div>
+
+

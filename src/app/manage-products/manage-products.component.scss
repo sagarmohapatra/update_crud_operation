@@ -1,0 +1,12 @@
+.form-group{
+    margin-bottom: 20px;
+}
+.clss{
+    color: #fff;
+    background: #ff6347;
+}
+      
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+    box-shadow: 0 0 22px #ff000030 inset;
+}
